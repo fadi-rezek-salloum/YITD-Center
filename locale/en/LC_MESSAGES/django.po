@@ -1,0 +1,398 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-11-19 00:52+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: accounts/models.py:9
+msgid "The Email must be set"
+msgstr ""
+
+#: accounts/models.py:22
+msgid "Superuser must have is_staff=True."
+msgstr ""
+
+#: accounts/models.py:24
+msgid "Superuser must have is_superuser=True."
+msgstr ""
+
+#: accounts/models.py:29 blog/models.py:66
+msgid "First Name"
+msgstr ""
+
+#: accounts/models.py:30 blog/models.py:67
+msgid "Last Name"
+msgstr ""
+
+#: accounts/models.py:32 blog/models.py:69
+msgid "Email Address"
+msgstr ""
+
+#: accounts/models.py:34
+msgid "Country"
+msgstr ""
+
+#: accounts/models.py:35
+msgid "Phone Number"
+msgstr ""
+
+#: accounts/models.py:36
+msgid "Address"
+msgstr ""
+
+#: accounts/views.py:57
+msgid "Your profile was update successfully!"
+msgstr ""
+
+#: core/settings.py:105
+msgid "English"
+msgstr ""
+
+#: core/settings.py:106
+msgid "Arabic"
+msgstr ""
+
+#: courses/models.py:8
+msgid "Beginner"
+msgstr ""
+
+#: courses/models.py:9
+msgid "Intermediate"
+msgstr ""
+
+#: courses/models.py:10
+msgid "Expert"
+msgstr ""
+
+#: quiz/models.py:22
+msgid "Question"
+msgstr ""
+
+#: quiz/models.py:23
+msgid "Questions"
+msgstr ""
+
+#: templates/_navbar.html:53
+msgid "Arabic (AR)"
+msgstr ""
+
+#: templates/_navbar.html:142
+msgid "Profile"
+msgstr ""
+
+#: templates/_navbar.html:154
+msgid "Sign out"
+msgstr ""
+
+#: templates/_navbar.html:169 templates/accounts/login.html:12
+#: templates/accounts/login.html:48
+msgid "Sign in"
+msgstr ""
+
+#: templates/_navbar.html:181
+msgid "Register"
+msgstr ""
+
+#: templates/_navbar.html:213
+msgid "Home"
+msgstr ""
+
+#: templates/_navbar.html:224
+msgid "Blog"
+msgstr ""
+
+#: templates/_navbar.html:245
+msgid "Medical Posts"
+msgstr ""
+
+#: templates/_navbar.html:287
+msgid "Languages Posts"
+msgstr ""
+
+#: templates/_navbar.html:302
+msgid "Courses"
+msgstr ""
+
+#: templates/_navbar.html:322 templates/categories/courses_list.html:15
+#: templates/courses/details.html:72
+msgid "Medical Courses"
+msgstr ""
+
+#: templates/_navbar.html:338 templates/categories/courses_list.html:17
+#: templates/courses/details.html:74
+msgid "Languages Courses"
+msgstr ""
+
+#: templates/_navbar.html:357 templates/admissions/list.html:19
+msgid "Admissions"
+msgstr ""
+
+#: templates/_navbar.html:370 templates/researches/list.html:18
+msgid "Scientific Researches"
+msgstr ""
+
+#: templates/_navbar.html:404 templates/base/about.html:13
+msgid "About Us"
+msgstr ""
+
+#: templates/accounts/login.html:27
+msgid "The credentials you provided are incorrect. Please try again!"
+msgstr ""
+
+#: templates/accounts/login.html:44
+msgid "Don't have an account? Register"
+msgstr ""
+
+#: templates/accounts/login.html:44 templates/accounts/register.html:52
+msgid "here"
+msgstr ""
+
+#: templates/accounts/register.html:13
+msgid "Create A New Account"
+msgstr ""
+
+#: templates/accounts/register.html:52
+msgid "Already registered? Sign in"
+msgstr ""
+
+#: templates/accounts/register.html:56
+msgid "Create User"
+msgstr ""
+
+#: templates/accounts/update_profile.html:13
+msgid "Edit Account"
+msgstr ""
+
+#: templates/accounts/update_profile.html:80
+msgid "Update Account"
+msgstr ""
+
+#: templates/admissions/details.html:36 templates/blog/details.html:34
+#: templates/courses/details.html:56
+msgid "Creation Date"
+msgstr ""
+
+#: templates/admissions/details.html:53 templates/courses/details.html:89
+msgid "Description"
+msgstr ""
+
+#: templates/admissions/details.html:68
+msgid "Learn More By Watching This Video"
+msgstr ""
+
+#: templates/admissions/list.html:48
+msgid "There are no admissions added yet!"
+msgstr ""
+
+#: templates/base/about.html:17
+msgid ""
+"A specialized institute for teaching international languages, and medical "
+"courses for the most important countries of the developed world, and "
+"facilitating them in the eyes of their students, by providing the best "
+"teachers and training experts, the best curricula and the most important "
+"educational tools necessary, which would help students in recalling and "
+"using information."
+msgstr ""
+
+#: templates/base/about.html:23
+msgid ""
+"The institute was established 2020, the events of SARS 2 (Covid 19), made it "
+"a suitable educational environment, and a point of attraction for many "
+"students, due to its readiness for e-learning, and the faculty members "
+"possessing the complete and comprehensive methods that each student needs."
+msgstr ""
+
+#: templates/base/about.html:29
+msgid ""
+"The institute is in the heart of Luxembourg, a country that hosts "
+"multilingualism (German, French, English and Luxembourgish)."
+msgstr ""
+
+#: templates/base/about.html:33
+msgid ""
+"In addition to the existence of a popular incubator for the Arab community "
+"in Russia and the interest of the local population (in the Arabic language) "
+"and the interest of the immigrant community in the local language (the "
+"Russian language)."
+msgstr ""
+
+#: templates/base/about.html:37
+msgid ""
+"Greater Luxembourg is home to citizens who alternately use the three "
+"languages ​​Luxembourgish, French and German, many foreign residents and a "
+"large number of cross-border workers."
+msgstr ""
+
+#: templates/base/about.html:43
+msgid "Our Goals"
+msgstr ""
+
+#: templates/base/about.html:47
+msgid "Center for adult education of various foreign languages."
+msgstr ""
+
+#: templates/base/about.html:50
+msgid "Promote multilingualism."
+msgstr ""
+
+#: templates/base/about.html:53
+msgid "Facilitating social integration and solidarity."
+msgstr ""
+
+#: templates/base/about.html:56
+msgid "Contribute to employing people."
+msgstr ""
+
+#: templates/base/about.html:59
+msgid "Organizing international exams and exams for foreign languages"
+msgstr ""
+
+#: templates/base/about.html:62
+msgid ""
+"Organizing training sessions for medical students to study the American, "
+"British and German equivalency exams."
+msgstr ""
+
+#: templates/base/index.html:51
+msgid "Welcome to YITD Center"
+msgstr ""
+
+#: templates/base/index.html:54
+msgid ""
+"Education is the passport to the future, for tomorrow belongs to those who "
+"prepare for it today."
+msgstr ""
+
+#: templates/base/index.html:58
+msgid "Get started"
+msgstr ""
+
+#: templates/base/index.html:82
+msgid "Categories"
+msgstr ""
+
+#: templates/base/index.html:91 templates/blog/details.html:51
+msgid "Languages"
+msgstr ""
+
+#: templates/base/index.html:102 templates/blog/details.html:49
+msgid "Medical"
+msgstr ""
+
+#: templates/base/index.html:111
+msgid "Featured Courses"
+msgstr ""
+
+#: templates/base/index.html:141
+msgid "View Details"
+msgstr ""
+
+#: templates/base/index.html:162
+msgid "There are no featured courses yet!"
+msgstr ""
+
+#: templates/blog/details.html:46 templates/courses/details.html:69
+msgid "Category"
+msgstr ""
+
+#: templates/blog/details.html:62
+msgid "Sub Category"
+msgstr ""
+
+#: templates/blog/details.html:82
+msgid "Content"
+msgstr ""
+
+#: templates/blog/details.html:96
+msgid "Leave A Comment"
+msgstr ""
+
+#: templates/blog/details.html:140
+msgid "First name"
+msgstr ""
+
+#: templates/blog/details.html:149
+msgid "Last name"
+msgstr ""
+
+#: templates/blog/details.html:159
+msgid "Email address"
+msgstr ""
+
+#: templates/blog/details.html:168
+msgid "Comment"
+msgstr ""
+
+#: templates/blog/details.html:173
+msgid "Send"
+msgstr ""
+
+#: templates/blog/list.html:18
+msgid "Blog Posts"
+msgstr ""
+
+#: templates/blog/list.html:51
+msgid "There are no posts added yet!"
+msgstr ""
+
+#: templates/categories/courses_list.html:57
+msgid "There are no courses added yet!"
+msgstr ""
+
+#: templates/courses/details.html:33
+msgid "Request This Course"
+msgstr ""
+
+#: templates/courses/details.html:45
+msgid "Difficulty"
+msgstr ""
+
+#: templates/courses/details.html:107
+msgid "Take a quiz"
+msgstr ""
+
+#: templates/quiz/list.html:19
+msgid "Result Of The Quiz"
+msgstr ""
+
+#: templates/quiz/list.html:34
+msgid "Your score"
+msgstr ""
+
+#: templates/quiz/list.html:37
+msgid "Correct answers"
+msgstr ""
+
+#: templates/quiz/list.html:40
+msgid "Wrong answers"
+msgstr ""
+
+#: templates/quiz/list.html:43
+msgid "Final mark"
+msgstr ""
+
+#: templates/researches/details.html:59
+msgid "Download Reseach File"
+msgstr ""
+
+#: templates/researches/details.html:70
+msgid "Download"
+msgstr ""
+
+#: templates/researches/list.html:50
+msgid "There are no researches added yet!"
+msgstr ""

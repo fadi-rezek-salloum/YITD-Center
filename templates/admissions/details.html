@@ -1,0 +1,77 @@
+{% extends '_base.html' %}
+
+{% load i18n %}
+{% load embed_video_tags %}
+
+{% get_current_language as CURRENT_LANGUAGE %}
+
+{% block title %}
+{{ admission.title_en }}
+{% endblock title %}
+
+{% block content %}
+
+<div class="container mx-auto py-5">
+    <div class="grid grid-cols-1 md:grid-cols-2 pt-8">
+        <div class="mx-auto w-full">
+            <img src="{{admission.thumbnail.url}}" alt="admission Thumbnail" class="rounded-lg post__details-img">
+        </div>
+        <div class="w-full">
+            <h2 class="mb-4 text-5xl font-bold text-center">
+                {% if CURRENT_LANGUAGE == 'en' %}
+                {{ admission.title_en }}
+                {% else %}
+                {{ admission.title_ar }}
+                {% endif %}
+            </h2>
+            <div class="block p-6 mt-10 max-w-sm rounded-lg border border-gray-200 shadow mx-auto">
+
+                <p class="flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-6 h-6 mr-1">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
+                    </svg>
+                    <b class="mr-1">
+                        {% trans "Creation Date" %}
+                        :
+                    </b>
+                    {{ admission.created|date }}
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="my-10">
+        <div class="flex">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-10 h-10 mr-1">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <p class="text-4xl font-bold mr-1">
+                {% trans "Description" %}
+            </p>
+        </div>
+        <p class="mt-8 px-2">
+            {% if CURRENT_LANGUAGE == 'en' %}
+                {{ admission.description_en|safe }}
+                {% else %}
+                {{ admission.description_ar|safe }}
+                {% endif %}
+        </p>
+    </div>
+
+    {% if admission.video %}
+        <div class="my-12 pt-10">
+            <p class="text-4xl font-bold mr-1">
+                {% trans "Learn More By Watching This Video" %}
+            </p>
+            <div class="mt-6">
+                {% video admission.video 'large' %}
+            </div>
+        </div>
+    {% endif %}
+</div>
+
+{% endblock content %}

@@ -1,0 +1,55 @@
+{% extends '_base.html' %}
+
+{% load i18n %}
+
+{% get_current_language as CURRENT_LANGUAGE %}
+
+{% block title %}
+
+All Admissions
+
+{% endblock title %}
+
+{% block content %}
+
+<div class="container mx-auto">
+    <div class="my-12 pb-8">
+
+        <h1 class="text-center text-4xl font-bold text-gray-700 my-12 py-8">
+            {% trans "Admissions" %}
+        </h1>
+
+        {% for admission in admissions %}
+
+        <a href="{{admission.get_absolute_url}}"
+            class="flex flex-col items-center bg-white rounded-lg border shadow md:flex-row w-full hover:bg-gray-100 my-10 gap-8">
+            <img class="md:rounded-none md:rounded-l-lg post__img" src="{{admission.thumbnail.url}}"
+                alt="admission Thumbnail {{admission.pk}}">
+            <div class="flex flex-col justify-between p-4 leading-normal">
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                    {% if CURRENT_LANGUAGE == 'en' %}
+                {{ admission.title_en }}
+                {% else %}
+                {{ admission.title_ar }}
+                {% endif %}
+                </h5>
+                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                    {% if CURRENT_LANGUAGE == 'en' %}
+                    {{admission.description_en|truncatechars:100}}
+                {% else %}
+                {{admission.description_ar|truncatechars:100}}
+                {% endif %}
+                </p>
+            </div>
+        </a>
+
+        {% empty %}
+        <h1 class="text-center text-xl font-bold text-gray-700 my-12 py-8">
+            {% trans "There are no admissions added yet!" %}
+        </h1>
+        {% endfor %}
+
+    </div>
+</div>
+
+{% endblock content %}

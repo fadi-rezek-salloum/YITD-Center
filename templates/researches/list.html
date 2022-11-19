@@ -1,0 +1,57 @@
+{% extends '_base.html' %}
+
+{% load i18n %}
+{% get_current_language as CURRENT_LANGUAGE %}
+
+{% block title %}
+
+All Researches
+
+{% endblock title %}
+
+{% block content %}
+
+<div class="container mx-auto">
+    <div class="my-12 pb-8">
+
+        <h1 class="text-center text-4xl font-bold text-gray-700 my-12 py-8">
+            {% trans "Scientific Researches" %}
+        </h1>
+
+        {% for research in researches %}
+
+        <a href="{{research.get_absolute_url}}"
+            class="flex flex-col items-center bg-white rounded-lg border shadow md:flex-row w-full hover:bg-gray-100 my-10 gap-8">
+            <img class="md:rounded-none md:rounded-l-lg post__img"
+                src="https://images.unsplash.com/photo-1537202108838-e7072bad1927?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fHJlc2VhcmNofGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                alt="admission Thumbnail {{research.pk}}">
+            <div class="flex flex-col justify-between p-4 leading-normal">
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                    {% if CURRENT_LANGUAGE == 'en' %}
+                    {{ research.name_en }}
+                    {% else %}
+                    {{ research.name_ar }}
+                    {% endif %}
+                </h5>
+                {% if research.content_en %}
+                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                    {% if CURRENT_LANGUAGE == 'en' %}
+                    {{research.content_en|truncatechars:100}}
+                    {% else %}
+                    {{research.content_ar|truncatechars:100}}
+                    {% endif %}
+                </p>
+                {% endif %}
+            </div>
+        </a>
+
+        {% empty %}
+        <h1 class="text-center text-xl font-bold text-gray-700 my-12 py-8">
+            {% trans "There are no researches added yet!" %}
+        </h1>
+        {% endfor %}
+
+    </div>
+</div>
+
+{% endblock content %}

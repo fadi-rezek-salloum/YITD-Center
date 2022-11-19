@@ -1,0 +1,64 @@
+{% extends '_base.html' %}
+
+{% load i18n %}
+{% get_current_language as CURRENT_LANGUAGE %}
+
+{% block title %}
+Courses
+{% endblock title %}
+
+{% block content %}
+
+<div class="container mx-auto my-8">
+    <h1 class="text-center text-4xl font-bold text-gray-700 my-12 py-8">
+        {% if 'medical' in request.path %}
+        {% trans "Medical Courses" %}
+        {% else %}
+        {% trans "Languages Courses" %}
+        {% endif %}
+    </h1>
+    <div class="grid grid-col-1 md:grid-cols-3 gap-4">
+        {% for course in courses %}
+        <div class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-xl mb-6">
+            <a href="{{course.get_absolute_url}}">
+                <img class="rounded-t-lg course__card-img" src="{{course.thumbnail.url}}" alt="Course Image" />
+            </a>
+            <div class="p-5">
+                <a href="{{course.get_absolute_url}}">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">
+                        {% if CURRENT_LANGUAGE == 'en' %}
+                        {{ course.name_en }}
+                        {% else %}
+                        {{ course.name_ar }}
+                        {% endif %}
+                    </h5>
+                </a>
+                <p class="mb-3 font-normal text-gray-700">
+                    {% if CURRENT_LANGUAGE == 'en' %}
+                    {{ course.description_en|truncatechars:35 }}
+                    {% else %}
+                    {{ course.description_ar|truncatechars:35 }}
+                    {% endif %}
+                </p>
+                <a href="{{course.get_absolute_url}}"
+                    class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
+                    View Details
+                    <svg aria-hidden="true" class="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        {% empty %}
+        <h1 class="text-center text-xl font-bold text-gray-700 my-12 py-8">
+            {% trans "There are no courses added yet!" %}
+        </h1>
+        {% endfor %}
+    </div>
+
+</div>
+
+{% endblock content %}

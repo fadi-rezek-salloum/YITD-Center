@@ -1,0 +1,141 @@
+{% extends '_base.html' %}
+
+{% load i18n %}
+{% get_current_language as CURRENT_LANGUAGE %}
+
+{% block title %}
+Quiz in {{ name_en }}
+{% endblock title %}
+
+{% block content %}
+
+{% if score is not None %}
+<div id="defaultModal" data-modal-placement="center-center" tabindex="-1" aria-hidden="false"
+    class="overflow-y-auto overflow-x-hidden fixed z-50 w-full h-modal md:h-full">
+    <div class="relative p-4 w-full max-w-2xl h-full md:h-auto mx-auto">
+        <div class="relative bg-gray-700 rounded-lg shadow">
+            <div class="flex justify-between items-start p-4 rounded-t border-b dark:border-gray-600">
+                <h3 class="text-xl font-semibold text-white dark:text-white">
+                    {% trans "Result Of The Quiz" %}
+                </h3>
+                <button type="button" id="closeModal"
+                    class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white">
+                    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+            </div>
+            <div class="p-6 space-y-6">
+                <p class="text-base leading-relaxed text-white">
+                    {% trans "Your score" %} : {{ score }}
+                </p>
+                <p class="text-base leading-relaxed text-green-400">
+                    {% trans "Correct answers" %} : {{correct}}
+                </p>
+                <p class="text-base leading-relaxed text-red-400">
+                    {% trans "Wrong answers" %} : {{wrong}}
+                </p>
+                <p class="text-base leading-relaxed text-white">
+                    {% trans "Final mark" %} : {{percent}} %
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<div class="container mx-auto">
+    <h1 class="text-center text-4xl font-bold text-gray-700 my-12 py-8">
+        {% if CURRENT_LANGUAGE == 'en' %}
+        Quiz in {{ name_en }}
+        {% else %}
+        امتحان في كورس {{ name_ar }}
+        {% endif %}
+    </h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <ol
+            class="w-full text-lg font-medium text-gray-900 bg-white rounded-lg border border-gray-200 list-decimal list-inside">
+            {% for question in questions %}
+            <li class="py-2 px-4 w-full rounded-t-lg border-b border-gray-200 text-green-700">
+                <span
+                    class="font-bold {% if answers %}{% for key, value in answers.items %}{% if key == question.pk and value.1 == True %}text-green-500{% elif key == question.pk and value.1 == False %}text-red-500{% endif %}{% endfor %}{% else %}text-gray-700{% endif %}">
+                    {{ question.question }}
+                </span>
+
+                <div class="flex items-center mb-4 mt-3">
+                    <input required id="{{question.question}}-op1" type="radio" value="{{question.op1}}"
+                        name="{{question.pk}}"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    <label for="{{question.question}}-op1"
+                        class="ml-2 text-sm font-medium {% if answers %}{% if question.ans == question.op1 %}text-green-500{% else %}text-red-500{% endif %}{% else %}text-gray-900{% endif %}">
+                        {{ question.op1 }}
+                    </label>
+                </div>
+
+                <div class="flex items-center mb-4 mt-3">
+                    <input required id="{{question.question}}-op2" type="radio" value="{{question.op2}}"
+                        name="{{question.pk}}"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    <label for="{{question.question}}-op2"
+                        class="ml-2 text-sm font-medium {% if answers %}{% if question.ans == question.op2 %}text-green-500{% else %}text-red-500{% endif %}{% else %}text-gray-900{% endif %}">
+                        {{ question.op2 }}
+                    </label>
+                </div>
+
+                <div class="flex items-center mb-4 mt-3">
+                    <input required id="{{question.question}}-op3" type="radio" value="{{question.op3}}"
+                        name="{{question.pk}}"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    <label for="{{question.question}}-op3"
+                        class="ml-2 text-sm font-medium {% if answers %}{% if question.ans == question.op3 %}text-green-500{% else %}text-red-500{% endif %}{% else %}text-gray-900{% endif %}">
+                        {{ question.op3 }}
+                    </label>
+                </div>
+
+                <div class="flex items-center mb-4 mt-3">
+                    <input required id="{{question.question}}-op4" type="radio" value="{{question.op4}}"
+                        name="{{question.pk}}"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    <label for="{{question.question}}-op4"
+                        class="ml-2 text-sm font-medium {% if answers %}{% if question.ans == question.op4 %}text-green-500{% else %}text-red-500{% endif %}{% else %}text-gray-900{% endif %}">
+                        {{ question.op4 }}
+                    </label>
+                </div>
+
+            </li>
+            {% endfor %}
+        </ol>
+        <div class="mt-5 pb-8 pt-8 w-full text-center">
+            <button type="submit"
+                class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-bold rounded-lg text-lg px-6 py-2.5 mb-2 flex inline-flex items-center w-96 justify-center">
+                Submit
+                <svg aria-hidden="true" class="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                        clip-rule="evenodd"></path>
+                </svg>
+            </button>
+        </div>
+
+    </form>
+</div>
+
+{% endblock content %}
+
+{% block extra_scripts %}
+<script>
+    const modal = document.getElementById("defaultModal");
+    const closeModal = document.getElementById("closeModal");
+
+    window.addEventListener('click', () => {
+        modal.style.display = 'none';
+    })
+</script>
+{% endblock extra_scripts %}

@@ -1,0 +1,185 @@
+{% extends '_base.html' %}
+
+{% load i18n %}
+{% get_current_language as CURRENT_LANGUAGE %}
+
+{% block title %}
+{{ post.title_en }}
+{% endblock title %}
+
+{% block content %}
+
+<div class="container mx-auto py-5">
+    <div class="grid grid-cols-1 md:grid-cols-2 pt-8">
+        <div class="mx-auto w-full">
+            <img src="{{post.thumbnail.url}}" alt="post Thumbnail" class="rounded-lg post__details-img">
+        </div>
+        <div class="w-full">
+            <h2 class="mb-4 text-5xl font-bold text-center">
+                {% if CURRENT_LANGUAGE == 'en' %}
+                {{ post.title_en }}
+                {% else %}
+                {{ post.title_ar }}
+                {% endif %}
+            </h2>
+            <div class="block p-6 max-w-sm rounded-lg border border-gray-200 shadow mx-auto">
+
+                <p class="flex mb-8">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-6 h-6 mr-1">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
+                    </svg>
+                    <b class="mr-1">
+                        {% trans "Creation Date" %} :
+                    </b>
+                    {{ post.created|date }}
+                </p>
+                <p class="flex mb-8">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-6 h-6 mr-1">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z" />
+                    </svg>
+                    <b class="mr-1">
+                        {% trans "Category" %} :
+                    </b>
+                    {% if 'medical' in post.category.name_en|lower %}
+                    {% trans "Medical" %}
+                    {% else %}
+                    {% trans "Languages" %}
+                    {% endif %}
+                </p>
+                <p class="flex mb-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-6 h-6 mr-1">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z" />
+                    </svg>
+                    <b class="mr-1">
+                        {% trans "Sub Category" %} :
+                    </b>
+                    {% if CURRENT_LANGUAGE == 'en' %}
+                    {{post.sub_category.name_en}}
+                    {% else %}
+                    {{post.sub_category.name_ar}}
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="my-10">
+        <div class="flex">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-10 h-10 mr-1">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <p class="text-4xl font-bold mr-1">
+                {% trans "Content" %}
+            </p>
+        </div>
+        <p class="mt-8 px-2">
+            {% if CURRENT_LANGUAGE == 'en' %}
+            {{ post.content_en|safe }}
+            {% else %}
+            {{ post.content_ar|safe }}
+            {% endif %}
+        </p>
+    </div>
+
+    <div class="my-12 pt-10">
+        <p class="text-4xl font-bold mr-1">
+            {% trans "Leave A Comment" %}
+        </p>
+        <form method="post" class="pt-10 comment__form mx-auto">
+            {% if messages %}
+            {% for message in messages %}
+
+            {% if message.tags == 'success' %}
+            <div class="flex p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800"
+                role="alert">
+                <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <span class="font-medium">
+                    {{ message }}
+                </span>
+            </div>
+            {% else %}
+            <div class="flex p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
+                role="alert">
+                <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <span class="font-medium">
+                    {{ message }}
+                </span>
+            </div>
+            {% endif %}
+
+            {% endfor %}
+            {% endif %}
+
+
+            {% csrf_token %}
+            <div class="grid md:grid-cols-2 md:gap-6">
+                <div class="relative z-0 mb-6 w-full group">
+                    <input type="text" name="first_name" id="first_name"
+                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        placeholder=" " required />
+                    <label for="first_name"
+                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                        {% trans "First name" %}
+                    </label>
+                </div>
+                <div class="relative z-0 mb-6 w-full group">
+                    <input type="text" name="last_name" id="last_name"
+                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        placeholder=" " required />
+                    <label for="last_name"
+                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                        {% trans "Last name" %}
+                    </label>
+                </div>
+            </div>
+            <div class="relative z-0 mb-6 w-full group">
+                <input type="email" name="email" id="email"
+                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    placeholder=" " required />
+                <label for="email"
+                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                    {% trans "Email address" %}
+                </label>
+            </div>
+            <div class="relative z-0 mb-6 w-full group">
+                <textarea name="comment" id="comment"
+                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    placeholder=" " rows="5" required></textarea>
+                <label for="comment"
+                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                    {% trans "Comment" %}
+                </label>
+            </div>
+            <button type="submit"
+                class="w-full text-white flex font-bold bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-md px-5 py-3 justify-center">
+                {% trans "Send" %}
+                <svg class="w-6 h-6 mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z">
+                    </path>
+                </svg>
+            </button>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}

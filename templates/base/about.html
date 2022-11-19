@@ -1,0 +1,68 @@
+{% extends '_base.html' %}
+
+{% load i18n %}
+
+{% block title %}
+About Us
+{% endblock title %}
+
+{% block content %}
+
+<div class="container mx-auto my-8 px-4 md:px-0">
+    <h1 class="text-center text-4xl font-bold text-gray-700 my-12 py-8">
+        {% trans "About Us" %}
+    </h1>
+
+    <p class="text-gray-900 text-xl">
+        {% trans "A specialized institute for teaching international languages, and medical courses for the most important countries of the developed world, and facilitating them in the eyes of their students, by providing the best teachers and training experts, the best curricula and the most important educational tools necessary, which would help students in recalling and using information." %}
+    </p>
+
+    <br>
+
+    <p class="text-gray-900 text-xl">
+        {% trans "The institute was established 2020, the events of SARS 2 (Covid 19), made it a suitable educational environment, and a point of attraction for many students, due to its readiness for e-learning, and the faculty members possessing the complete and comprehensive methods that each student needs." %}
+    </p>
+
+    <br>
+
+    <p class="text-gray-900 text-xl">
+        {% trans "The institute is in the heart of Luxembourg, a country that hosts multilingualism (German, French, English and Luxembourgish)." %}
+    </p>
+
+    <p class="text-gray-900 text-xl">
+        {% trans "In addition to the existence of a popular incubator for the Arab community in Russia and the interest of the local population (in the Arabic language) and the interest of the immigrant community in the local language (the Russian language)." %}
+    </p>
+
+    <p class="text-gray-900 text-xl">
+        {% trans "Greater Luxembourg is home to citizens who alternately use the three languages ​​Luxembourgish, French and German, many foreign residents and a large number of cross-border workers." %}
+    </p>
+
+
+
+    <h1 class="text-center text-4xl font-bold text-gray-700 my-12 py-8">
+        {% trans "Our Goals" %}
+    </h1>
+    <ul class="text-xl list-disc list-inside mb-10">
+        <li>
+            {% trans "Center for adult education of various foreign languages." %}
+        </li>
+        <li>
+            {% trans "Promote multilingualism." %}
+        </li>
+        <li>
+            {% trans "Facilitating social integration and solidarity." %}
+        </li>
+        <li>
+            {% trans "Contribute to employing people." %}
+        </li>
+        <li>
+            {% trans "Organizing international exams and exams for foreign languages" %}
+        </li>
+        <li>
+            {% trans "Organizing training sessions for medical students to study the American, British and German equivalency exams." %}
+        </li>
+    </ul>
+
+</div>
+
+{% endblock content %}

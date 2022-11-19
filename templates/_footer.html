@@ -1,0 +1,24 @@
+{% load static %}
+
+<footer class="p-4 bg-white rounded-lg md:px-6 md:py-8 dark:bg-gray-900">
+    <div class="sm:flex sm:items-center sm:justify-between">
+        <a href="{% url 'base:index' %}" class="flex items-center mb-4 sm:mb-0">
+            <img src="{% static 'images/logo.png' %}" class="mr-3 navbar__logo" alt="Logo" />
+        </a>
+        <ul class="flex flex-wrap items-center mb-6 text-sm text-gray-500 sm:mb-0 dark:text-gray-400">
+            <li>
+                <a href="#" class="mr-4 hover:underline md:mr-6 ">
+                    <img src="{% static 'images/facebook.png' %}" alt="Facebook" class="w-9 h-9">
+                </a>
+            </li>
+            <li>
+                <a href="#" class="mr-4 hover:underline md:mr-6 ">
+                    <img src="{% static 'images/instagram.png' %}" alt="Facebook" class="w-9 h-9">
+                </a>
+            </li>
+        </ul>
+    </div>
+    <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+    <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2022-2023 YITD Center&reg;. All Rights Reserved.
+    </span>
+</footer>
